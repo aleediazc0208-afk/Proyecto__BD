@@ -10,8 +10,8 @@
 
 body {
     font-family: 'Poppins', Arial, sans-serif;
-    background-color: #f1f5f9;
-    color: #1e293b;
+    background-color: #f1f8f9;
+    color: #151616;
     line-height: 1.6;
     min-height: 100vh;
     display: flex;
@@ -27,7 +27,7 @@ body {
 
 /* --- Barra de Navegación (Navbar) --- */
 .navbar {
-    background-color: #ffffff;
+    background-color: #aacdf5;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     position: sticky;
     top: 0;
@@ -49,7 +49,7 @@ body {
 }
 
 .logo strong {
-    color: #2563eb;
+    color: #5e9aea;
 }
 
 .nav-links {
@@ -59,7 +59,7 @@ body {
 
 .nav-links a {
     text-decoration: none;
-    color: #64748b;
+    color: #fffefe;
     font-weight: 500;
     transition: color 0.2s;
 }
@@ -81,11 +81,11 @@ main {
 
 .encabezado-principal h1 {
     font-size: 2rem;
-    color: #0f172a;
+    color: #547cd9;
 }
 
 .encabezado-principal p {
-    color: #64748b;
+    color: #5983bd;
     font-size: 1rem;
 }
 
@@ -100,7 +100,7 @@ main {
 
 /* Tarjeta contenedora blanca */
 .tarjeta {
-    background-color: #ffffff;
+    background-color: #d0e7f8;
     border-radius: 12px;
     padding: 25px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -288,8 +288,8 @@ textarea:focus {
 
 /* --- Pie de Página (Footer) --- */
 .footer {
-    background-color: #0f172a;
-    color: #94a3b8;
+    background-color: #b3d1fb;
+    color: #ebedf0;
     padding: 20px 0;
     margin-top: auto;
     text-align: center;
