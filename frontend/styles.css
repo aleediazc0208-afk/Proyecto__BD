@@ -1,6 +1,18 @@
 /* =========================================================
-   estilos.css — Estilos para Mi Tienda
+   styles.css — Tema NEGRO + MORADO NEÓN para Mi Tienda
    ========================================================= */
+
+:root {
+    --negro: #050008;
+    --negro-2: #0b0012;
+    --tarjeta: rgba(14, 0, 24, 0.92);
+    --neon: #b026ff;
+    --neon-claro: #d17dff;
+    --neon-profundo: #7a00e6;
+    --texto: #f5ebff;
+    --gris: #b79ad6;
+    --degradado: linear-gradient(90deg, #7a00e6, #b026ff, #d17dff);
+}
 
 * {
     margin: 0;
@@ -8,14 +20,53 @@
     box-sizing: border-box;
 }
 
+::selection {
+    background: var(--neon);
+    color: #ffffff;
+}
+
+/* Barra de scroll morada */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--negro);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--neon-profundo), var(--neon));
+    border-radius: 10px;
+}
+
 body {
     font-family: 'Poppins', Arial, sans-serif;
-    background-color: #f1f8f9;
-    color: #151616;
+    background:
+        radial-gradient(circle at 15% 0%, rgba(176, 38, 255, 0.28), transparent 45%),
+        radial-gradient(circle at 90% 100%, rgba(122, 0, 230, 0.28), transparent 45%),
+        var(--negro);
+    background-attachment: fixed;
+    color: var(--texto);
     line-height: 1.6;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    color-scheme: dark;
+}
+
+/* Cuadrícula morada de fondo */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(176, 38, 255, 0.09) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(176, 38, 255, 0.09) 1px, transparent 1px);
+    background-size: 50px 50px;
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 20%, transparent 75%);
+    mask-image: radial-gradient(ellipse at center, #000 20%, transparent 75%);
 }
 
 .contenedor {
@@ -27,51 +78,87 @@ body {
 
 /* --- Barra de Navegación (Navbar) --- */
 .navbar {
-    background-color: #aacdf5;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    background: rgba(5, 0, 8, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     position: sticky;
     top: 0;
     z-index: 10;
+}
+
+/* Línea de neón morado animada */
+.navbar::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #7a00e6, #d17dff, #b026ff, #d17dff, #7a00e6);
+    background-size: 200% 100%;
+    box-shadow: 0 0 14px rgba(176, 38, 255, 0.9), 0 0 28px rgba(176, 38, 255, 0.5);
+    animation: fluir 5s linear infinite;
 }
 
 .nav-contenido {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 65px;
+    min-height: 72px;
+    gap: 10px;
 }
 
 .logo {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: 700;
     text-decoration: none;
-    color: #1e293b;
+    color: #ffffff;
+    letter-spacing: 1px;
 }
 
 .logo strong {
-    color: #5e9aea;
+    color: var(--neon-claro);
+    text-shadow: 0 0 10px var(--neon), 0 0 22px var(--neon);
 }
 
 .nav-links {
     display: flex;
-    gap: 20px;
+    gap: 6px;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: #fffefe;
+    color: var(--texto);
     font-weight: 500;
-    transition: color 0.2s;
+    padding: 9px 18px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    transition: color 0.25s, background-color 0.25s, border-color 0.25s, box-shadow 0.25s;
 }
 
 .nav-links a:hover {
-    color: #2563eb;
+    color: #ffffff;
+    background-color: rgba(176, 38, 255, 0.15);
+    border-color: var(--neon);
+    box-shadow: 0 0 14px rgba(176, 38, 255, 0.7), inset 0 0 10px rgba(176, 38, 255, 0.2);
 }
 
 /* --- Contenido Principal --- */
 main {
     flex: 1;
-    padding: 40px 20px;
+    padding: 45px 20px;
+}
+
+main > * {
+    animation: subir 0.7s ease both;
+}
+
+main > *:nth-child(2) {
+    animation-delay: 0.12s;
+}
+
+main > *:nth-child(3) {
+    animation-delay: 0.24s;
 }
 
 .encabezado-principal {
@@ -80,90 +167,165 @@ main {
 }
 
 .encabezado-principal h1 {
-    font-size: 2rem;
-    color: #547cd9;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(176, 38, 255, 0.9), 0 0 26px rgba(176, 38, 255, 0.6);
 }
 
 .encabezado-principal p {
-    color: #5983bd;
-    font-size: 1rem;
+    color: var(--gris);
+    font-size: 1.05rem;
 }
 
-/* --- Layout del Panel (Formulario + Lista) --- */
-.panel-tienda {
-    display: grid;
-    grid-template-columns: 360px 1fr;
-    gap: 25px;
-    align-items: start;
-    margin-bottom: 35px;
+/* --- Inicio: banner de bienvenida --- */
+#inicio .encabezado-principal {
+    border: 2px solid var(--neon);
+    border-radius: 24px;
+    padding: 80px 25px;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(176, 38, 255, 0.35), transparent 65%),
+        var(--negro-2);
+    box-shadow:
+        0 0 22px rgba(176, 38, 255, 0.7),
+        0 0 60px rgba(176, 38, 255, 0.35),
+        inset 0 0 30px rgba(176, 38, 255, 0.15);
+    animation: subir 0.7s ease both, pulso 3s ease-in-out infinite;
 }
 
-/* Tarjeta contenedora blanca */
+#inicio .encabezado-principal h1 {
+    font-size: 2.8rem;
+    margin-bottom: 12px;
+    text-shadow: 0 0 12px #b026ff, 0 0 30px #b026ff, 0 0 60px rgba(176, 38, 255, 0.7);
+}
+
+#inicio .encabezado-principal p {
+    color: var(--texto);
+    font-size: 1.15rem;
+}
+
+#inicio .tarjeta {
+    text-align: center;
+    padding: 35px 25px;
+}
+
+#inicio .tarjeta h2 {
+    border-bottom: none;
+}
+
+/* --- Tarjeta contenedora --- */
 .tarjeta {
-    background-color: #d0e7f8;
-    border-radius: 12px;
-    padding: 25px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    background-color: var(--tarjeta);
+    border: 1.5px solid var(--neon);
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow:
+        0 0 16px rgba(176, 38, 255, 0.45),
+        inset 0 0 22px rgba(176, 38, 255, 0.08);
 }
 
 .tarjeta h2 {
-    font-size: 1.25rem;
-    color: #1e293b;
-    margin-bottom: 18px;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 8px;
+    font-size: 1.35rem;
+    color: var(--neon-claro);
+    margin-bottom: 22px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--neon);
+    text-shadow: 0 0 10px rgba(176, 38, 255, 0.9);
+}
+
+.tarjeta p {
+    color: var(--gris);
+}
+
+/* Formulario de producto centrado */
+#registro {
+    max-width: 580px;
+    margin: 0 auto;
 }
 
 /* --- Formulario --- */
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 18px;
 }
 
 .campo {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 7px;
 }
 
 label {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-weight: 600;
-    color: #475569;
+    color: var(--neon-claro);
+    letter-spacing: 0.4px;
 }
 
 input,
 textarea {
     font-family: inherit;
     font-size: 0.95rem;
-    padding: 10px 12px;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    padding: 13px 15px;
+    color: #ffffff;
+    background-color: #08000f;
+    border: 1.5px solid rgba(176, 38, 255, 0.55);
+    border-radius: 12px;
     outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: border-color 0.25s, box-shadow 0.25s, background-color 0.25s;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #7d5fa0;
 }
 
 input:focus,
 textarea:focus {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    border-color: var(--neon);
+    background-color: rgba(176, 38, 255, 0.08);
+    box-shadow: 0 0 0 3px rgba(176, 38, 255, 0.25), 0 0 20px rgba(176, 38, 255, 0.7);
 }
 
-/* Botones */
+/* --- Botones --- */
 .btn {
-    padding: 12px;
+    position: relative;
+    overflow: hidden;
+    padding: 14px;
     font-family: inherit;
     font-size: 0.95rem;
-    font-weight: 600;
+    font-weight: 700;
+    letter-spacing: 0.5px;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s;
+    transition: transform 0.2s, box-shadow 0.25s;
+}
+
+/* Destello que cruza el botón */
+.btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s;
+}
+
+.btn:hover::after {
+    left: 130%;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
 }
 
 .btn:active {
-    transform: scale(0.98);
+    transform: scale(0.97);
 }
 
 .acciones-form {
@@ -173,66 +335,82 @@ textarea:focus {
 
 .btn-guardar {
     flex: 1;
-    background-color: #2563eb;
+    background: linear-gradient(90deg, #7a00e6, #b026ff);
     color: #ffffff;
+    box-shadow: 0 0 18px rgba(176, 38, 255, 0.75);
 }
 
 .btn-guardar:hover {
-    background-color: #1d4ed8;
+    box-shadow: 0 0 32px rgba(176, 38, 255, 1), 0 0 60px rgba(176, 38, 255, 0.5);
 }
 
 .btn-cancelar {
-    background-color: #e2e8f0;
-    color: #475569;
+    background-color: transparent;
+    color: var(--gris);
+    border: 1.5px solid rgba(183, 154, 214, 0.6);
 }
 
 .btn-cancelar:hover {
-    background-color: #cbd5e1;
+    color: #ffffff;
+    border-color: var(--neon);
+    box-shadow: 0 0 16px rgba(176, 38, 255, 0.7);
 }
 
 .btn-contacto {
-    background-color: #0f172a;
+    background: linear-gradient(90deg, #7a00e6, #b026ff);
     color: #ffffff;
     align-self: flex-start;
-    padding: 10px 24px;
+    padding: 13px 32px;
+    box-shadow: 0 0 18px rgba(176, 38, 255, 0.75);
 }
 
 .btn-contacto:hover {
-    background-color: #334155;
+    box-shadow: 0 0 32px rgba(176, 38, 255, 1), 0 0 60px rgba(176, 38, 255, 0.5);
 }
 
 /* --- Tarjetas de Producto --- */
 .lista-productos {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
 }
 
 .producto {
-    background-color: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
-    padding: 16px;
+    background: linear-gradient(160deg, #14001f, #08000f);
+    border: 1.5px solid rgba(176, 38, 255, 0.6);
+    border-radius: 16px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 12px;
+    gap: 14px;
+    box-shadow: 0 0 10px rgba(176, 38, 255, 0.25);
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+
+.producto:hover {
+    transform: translateY(-6px);
+    border-color: var(--neon-claro);
+    box-shadow:
+        0 0 22px rgba(176, 38, 255, 0.8),
+        0 0 48px rgba(176, 38, 255, 0.4);
 }
 
 .producto h3 {
-    font-size: 1.05rem;
-    color: #0f172a;
+    font-size: 1.12rem;
+    color: #ffffff;
 }
 
 .producto p {
     font-size: 0.9rem;
-    color: #64748b;
+    color: var(--gris);
 }
 
 .producto-precio {
     font-weight: 700;
-    color: #2563eb;
-    font-size: 1.1rem !important;
+    font-size: 1.2rem !important;
+    color: var(--neon-claro) !important;
+    text-shadow: 0 0 12px rgba(176, 38, 255, 1);
 }
 
 .acciones {
@@ -242,31 +420,38 @@ textarea:focus {
 
 .acciones button {
     flex: 1;
-    padding: 8px;
+    padding: 9px;
+    font-family: inherit;
     font-size: 0.85rem;
     font-weight: 600;
-    border: none;
-    border-radius: 6px;
+    background-color: transparent;
+    border-radius: 9px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.25s, box-shadow 0.25s, transform 0.2s, color 0.25s;
+}
+
+.acciones button:hover {
+    transform: translateY(-2px);
 }
 
 .btn-editar {
-    background-color: #e2e8f0;
-    color: #334155;
+    color: var(--neon-claro);
+    border: 1.5px solid var(--neon);
 }
 
 .btn-editar:hover {
-    background-color: #cbd5e1;
+    background-color: rgba(176, 38, 255, 0.25);
+    box-shadow: 0 0 16px rgba(176, 38, 255, 0.8);
 }
 
 .btn-eliminar {
-    background-color: #fee2e2;
-    color: #dc2626;
+    color: #ff5fd2;
+    border: 1.5px solid #ff5fd2;
 }
 
 .btn-eliminar:hover {
-    background-color: #fca5a5;
+    background-color: rgba(255, 95, 210, 0.18);
+    box-shadow: 0 0 16px rgba(255, 95, 210, 0.7);
 }
 
 /* --- Sección Contacto --- */
@@ -275,7 +460,7 @@ textarea:focus {
 }
 
 .subtitulo-contacto {
-    color: #64748b;
+    color: var(--gris);
     font-size: 0.9rem;
     margin-bottom: 15px;
 }
@@ -288,25 +473,107 @@ textarea:focus {
 
 /* --- Pie de Página (Footer) --- */
 .footer {
-    background-color: #b3d1fb;
-    color: #ebedf0;
-    padding: 20px 0;
+    position: relative;
+    background: rgba(5, 0, 8, 0.95);
+    color: var(--gris);
+    padding: 24px 0;
     margin-top: auto;
     text-align: center;
     font-size: 0.9rem;
 }
 
-/* --- Responsive --- */
-@media (max-width: 768px) {
-    .panel-tienda {
-        grid-template-columns: 1fr;
+.footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #7a00e6, #d17dff, #b026ff, #d17dff, #7a00e6);
+    background-size: 200% 100%;
+    box-shadow: 0 0 14px rgba(176, 38, 255, 0.9), 0 0 28px rgba(176, 38, 255, 0.5);
+    animation: fluir 5s linear infinite;
+}
+
+/* --- Animaciones --- */
+@keyframes subir {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
     }
 
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fluir {
+    from {
+        background-position: 0% 0;
+    }
+
+    to {
+        background-position: 200% 0;
+    }
+}
+
+@keyframes pulso {
+    0%, 100% {
+        box-shadow:
+            0 0 22px rgba(176, 38, 255, 0.7),
+            0 0 60px rgba(176, 38, 255, 0.35),
+            inset 0 0 30px rgba(176, 38, 255, 0.15);
+    }
+
+    50% {
+        box-shadow:
+            0 0 32px rgba(176, 38, 255, 1),
+            0 0 90px rgba(176, 38, 255, 0.55),
+            inset 0 0 40px rgba(176, 38, 255, 0.25);
+    }
+}
+
+/* Respeta a quien prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
     .fila-contacto {
         grid-template-columns: 1fr;
     }
 
+    .nav-contenido {
+        flex-direction: column;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
     .nav-links {
-        display: none;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+    }
+
+    .nav-links a {
+        padding: 7px 13px;
+        font-size: 0.9rem;
+    }
+
+    #inicio .encabezado-principal {
+        padding: 50px 18px;
+    }
+
+    #inicio .encabezado-principal h1 {
+        font-size: 1.9rem;
+    }
+
+    .tarjeta {
+        padding: 22px;
     }
 }
