@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Formulario — Mi Tienda</title>
 
-  <!-- Fuente moderna -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -16,26 +16,26 @@
 </head>
 
 <body>
-  <!-- ===== BARRA DE NAVEGACIÓN (NAVBAR) ===== -->
+
   <header class="navbar">
     <div class="contenedor nav-contenido">
       <a href="index.html" class="logo"> Mi<strong>Tienda</strong></a>
       <nav class="nav-links">
         <a href="index.html">Inicio</a>
         <a href="productos.html">Productos</a>
-        <a href="formulario.html">Formulario</a>
+        <a href="formulario.html" class="activo" aria-current="page">Formulario</a>
+        <a href="resenas.html">Reseñas</a>
         <a href="contacto.html">Contacto</a>
       </nav>
     </div>
   </header>
 
-  <!-- ===== CONTENIDO PRINCIPAL ===== -->
+
   <main class="contenedor">
     <section class="tarjeta" id="registro">
       <h2 id="tituloFormulario">Registrar Producto</h2>
 
       <form id="formularioProducto">
-        <!-- Campo oculto para almacenar el ID en caso de edición -->
         <input type="hidden" id="productoId" value="" />
 
         <div class="campo">
@@ -45,12 +45,23 @@
 
         <div class="campo">
           <label for="precio">Precio ($):</label>
-          <input type="number" id="precio" step="0.01" placeholder="Ej: 25000" required />
+          <input type="number" id="precio" min="0" step="0.01" placeholder="Ej: 25000" required />
         </div>
 
         <div class="campo">
           <label for="stock">Stock (cantidad):</label>
-          <input type="number" id="stock" placeholder="Ej: 10" required />
+          <input type="number" id="stock" min="0" step="1" placeholder="Ej: 10" required />
+        </div>
+
+        <div class="campo">
+          <label for="imagenArchivo">Imagen del producto:</label>
+          <input type="file" id="imagenArchivo" accept="image/*" />
+          <input type="hidden" id="imagenUrlActual" value="" />
+          <div id="contenedorVistaPrevia" hidden>
+            <img id="vistaPrevia" alt="Vista previa de la imagen del producto" />
+            <p id="textoVistaPrevia"></p>
+          </div>
+          <small>La imagen se subirá al guardar el producto. Tamaño máximo: 10 MB.</small>
         </div>
 
         <div class="acciones-form">
@@ -61,10 +72,10 @@
     </section>
   </main>
 
-  <!-- ===== PIE DE PÁGINA (FOOTER) ===== -->
+
   <footer class="footer">
     <div class="contenedor footer-contenido">
-      <p>copy; 2026 Mi Tienda — Proyecto Formativo con Node.js, Express y MySQL.</p>
+      <p>&copy; 2026 Mi Tienda — Proyecto Formativo con Node.js, Express y MySQL.</p>
     </div>
   </footer>
 

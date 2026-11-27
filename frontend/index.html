@@ -4,48 +4,178 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mi Tienda — Inicio</title>
+  <meta name="description" content="Mi Tienda: periféricos, consolas y accesorios gamer con envío a todo el país." />
+  <title>Mi Tienda — Productos Gamer</title>
 
-  <!-- Fuente moderna -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap"
     rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <!-- ===== BARRA DE NAVEGACIÓN (NAVBAR) ===== -->
+
   <header class="navbar">
     <div class="contenedor nav-contenido">
-      <a href="index.html" class="logo"> Mi<strong>Tienda</strong></a>
-      <nav class="nav-links">
-        <a href="index.html">Inicio</a>
+      <a href="index.html" class="logo">Mi<strong>Tienda</strong></a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="index.html" class="activo">Inicio</a>
         <a href="productos.html">Productos</a>
         <a href="formulario.html">Formulario</a>
+        <a href="resenas.html">Reseñas</a>
         <a href="contacto.html">Contacto</a>
       </nav>
     </div>
   </header>
 
-  <!-- ===== CONTENIDO PRINCIPAL ===== -->
-  <main class="contenedor" id="inicio">
-    <div class="encabezado-principal">
-      <h1>Sistema de Gestión de Productos</h1>
-      <p>Panel de control conectado a MySQL y Express</p>
-    </div>
+  <main id="inicio">
 
-    <section class="tarjeta">
-      <h2>Bienvenido a Mi Tienda</h2>
-      <p>Usa el menú de arriba para ver la lista de productos, registrar uno nuevo o enviarnos un mensaje.</p>
+  
+    <section class="hero">
+      <div class="contenedor hero-contenido">
+        <div class="hero-texto">
+          <h1>Equípate para <span class="neon">ganar</span></h1>
+          <p>Teclados, mouse, audífonos, sillas y consolas. Todo lo que tu setup necesita, con garantía y envío a
+            todo el país.</p>
+          <div class="hero-botones">
+            <a href="productos.html" class="btn btn-primario">Ver productos</a>
+            <a href="#quienes-somos" class="btn btn-secundario">Conócenos</a>
+          </div>
+        </div>
+
+        <div class="hero-panel" aria-hidden="true">
+          <div class="panel-item">Teclados mecánicos</div>
+          <div class="panel-item">Mouse de alta precisión</div>
+          <div class="panel-item">Audífonos 7.1</div>
+          <div class="panel-item"> Monitores 144 Hz</div>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="seccion">
+      <div class="contenedor">
+        <div class="seccion-titulo">
+          <h2>Categorías</h2>
+          <p>Elige por dónde empezar a armar tu setup.</p>
+        </div>
+
+        <div class="grid grid-4">
+          <a href="productos.html" class="tarjeta categoria">
+            <h3>Teclados</h3>
+            <p>Mecánicos, RGB y compactos.</p>
+          </a>
+          <a href="productos.html" class="tarjeta categoria">
+            <h3>Mouse</h3>
+            <p>Sensores precisos y ligeros.</p>
+          </a>
+          <a href="productos.html" class="tarjeta categoria">
+            <h3>Audífonos</h3>
+            <p>Sonido envolvente y micrófono claro.</p>
+          </a>
+          <a href="productos.html" class="tarjeta categoria">
+            <h3>Consolas y controles</h3>
+            <p>Juega en sala o en tu escritorio.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion seccion-alt" id="quienes-somos">
+      <div class="contenedor grid grid-2 centrado-v">
+        <div>
+          <h2>Quiénes somos</h2>
+          <p class="texto-largo">Somos jugadores vendiendo para jugadores. Mi Tienda nació para que conseguir
+            equipo gamer de calidad no sea complicado ni caro.</p>
+          <p class="texto-largo">Probamos lo que vendemos, trabajamos con marcas confiables y te acompañamos antes y
+            después de la compra.</p>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="tarjeta">
+            <h3>Misión</h3>
+            <p>Ofrecer productos gamer originales, a buen precio y con soporte real.</p>
+          </div>
+          <div class="tarjeta">
+            <h3>Visión</h3>
+            <p>Ser la tienda gamer de referencia para la comunidad en Colombia.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion">
+      <div class="contenedor">
+        <div class="seccion-titulo">
+          <h2>Por qué comprar con nosotros</h2>
+        </div>
+
+        <div class="grid grid-4">
+          <div class="tarjeta">
+            <h3>Envíos a todo el país</h3>
+            <p>Despacho rápido y seguimiento de tu pedido.</p>
+          </div>
+          <div class="tarjeta">
+            <h3>Garantía</h3>
+            <p>Productos originales con respaldo del fabricante.</p>
+          </div>
+          <div class="tarjeta">
+            <h3>Pagos seguros</h3>
+            <p>Tarjeta, PSE o contraentrega.</p>
+          </div>
+          <div class="tarjeta">
+            <h3>Soporte gamer</h3>
+            <p>Te ayudamos a elegir y a configurar tu equipo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="seccion seccion-alt">
+      <div class="contenedor">
+        <div class="seccion-titulo">
+          <h2>Nuestro equipo</h2>
+          <p>Las personas detrás de cada pedido.</p>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="tarjeta persona">
+            <div class="avatar">AM</div>
+            <h3>Michell Alexandra Diaz Correa</h3>
+            <p class="rol">Fundador y compras</p>
+          </div>
+          
+      </div>
+    </section>
+
+    <section class="seccion">
+      <div class="contenedor">
+        <div class="cta">
+          <h2>¿Listo para subir de nivel?</h2>
+          <p>Mira el catálogo completo o escríbenos si necesitas ayuda para elegir.</p>
+          <div class="hero-botones">
+            <a href="productos.html" class="btn btn-primario">Ir al catálogo</a>
+            <a href="contacto.html" class="btn btn-secundario">Contactar</a>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
-  <!-- ===== PIE DE PÁGINA (FOOTER) ===== -->
+
   <footer class="footer">
     <div class="contenedor footer-contenido">
-      <p>copy; 2026 Mi Tienda — Proyecto Formativo con Node.js, Express y MySQL.</p>
+      <p>&copy; 2026 Mi Tienda — Proyecto Formativo con Node.js, Express y MySQL.</p>
+      <nav class="footer-links" aria-label="Enlaces del pie de página">
+        <a href="productos.html">Productos</a>
+        <a href="formulario.html">Formulario</a>
+        <a href="resenas.html">Reseñas</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
     </div>
   </footer>
 </body>
